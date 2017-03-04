@@ -53,6 +53,10 @@ const dev = {
       template: path.resolve('template.html'),
     }),
   ],
+  devServer: {
+    hot: true,
+    stats: 'errors-only',
+  },
 };
 
 
