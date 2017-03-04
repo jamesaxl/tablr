@@ -1,5 +1,7 @@
 const path = require('path');
+const merge = require('webpack-merge');
 const Clean = require('clean-webpack-plugin');
+const Html = require('html-webpack-plugin');
 
 const paths = {
   src: path.resolve('src'),
@@ -7,7 +9,7 @@ const paths = {
 };
 
 
-module.exports = {
+const base = {
   context: paths.src,
   entry: 'index.ts',
   output: {
@@ -41,4 +43,26 @@ module.exports = {
       root: paths.dist,
     }),
   ],
+};
+
+
+const dev = {
+  plugins: [
+    new Html({
+      title: 'Tablr &bull; Dev',
+      template: path.resolve('template.html'),
+    }),
+  ],
+};
+
+
+const prod = {};
+
+
+module.exports = function (env) {
+  return merge(base, (() => {
+    if (env.dev) return dev;
+    if (env.prod) return prod;
+    throw new Error('Environment does not exist');
+  })());
 };
