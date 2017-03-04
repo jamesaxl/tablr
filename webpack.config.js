@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const Clean = require('clean-webpack-plugin');
 const Html = require('html-webpack-plugin');
@@ -60,7 +61,11 @@ const dev = {
 };
 
 
-const prod = {};
+const prod = {
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+  ],
+};
 
 
 module.exports = function (env) {
