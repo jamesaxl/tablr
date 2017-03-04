@@ -54,11 +54,6 @@ const dev = {
       template: path.resolve('template.html'),
     }),
   ],
-  devtool: 'eval-source-map',
-  devServer: {
-    hot: true,
-    stats: 'errors-only',
-  },
 };
 
 
