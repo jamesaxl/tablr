@@ -23,9 +23,17 @@ module.exports = {
   module: {
     rules: [{
       test: /\.ts$/,
-      use: [{
-        loader: 'ts-loader',
-      }],
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        },
+        {
+          loader: 'ts-loader',
+        },
+      ],
     }],
   },
   plugins: [
