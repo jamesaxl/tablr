@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "moduleResolution": "node",
+    "baseUrl": "src/",
+    "rootDir": "src/",
+    "outDir": "dist/",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "newLine": "LF"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
