@@ -6,27 +6,30 @@ function header(columns) {
 
 
 function body(rows) {
-  return document.createElement('tbody')
-    .appendChild(rows
+  const tbody = document.createElement('tbody');
+  rows.forEach((row) => {
+    tbody.appendChild(row
       .reduce(td, document.createElement('tr')));
-}
-
-
-function cell(row, column, type) {
-  const element = document.createElement(type);
-  element.appendChild(document.createTextNode(column.label));
-  row.appendChild(element);
-  return row;
+  });
+  return tbody;
 }
 
 
 function th(row, column) {
-  return cell(row, column, 'th');
+  return cell(row, column.label, 'th');
 }
 
 
-function td(row, column) {
-  return cell(row, column, 'td');
+function td(row, rowContent) {
+  return cell(row, rowContent, 'td');
+}
+
+
+function cell(row, text, type) {
+  const element = document.createElement(type);
+  element.appendChild(document.createTextNode(text));
+  row.appendChild(element);
+  return row;
 }
 
 

@@ -7,14 +7,14 @@ class Tablr {
   constructor(element, props) {
     this.element = resolveElement(element);
     this.columns = props.columns.map(a => new Column(a));
-    this.rows = [];
+    this.rows = props.rows;
     this.render();
   }
 
 
   render() {
     this.element.appendChild(render.header(this.columns));
-    this.element.appendChild(render.body(this.rows));
+    this.element.appendChild(render.body(tabularRows(this.rows, this.columns)));
   }
 }
 
@@ -26,23 +26,47 @@ function resolveElement(element) {
 }
 
 
+function tabularRows(rows, columns) {
+  return rows.map(row => Object.keys(row)
+    .map(id => row[id]));
+}
+
+
 const tablr = new Tablr('#has-schema', {
   columns: [
     {
+      id: 'userId',
       label: 'UserID',
       dataType: 'number',
     },
     {
+      id: 'firstName',
       label: 'First Name',
       dataType: 'string',
     },
     {
+      id: 'lastName',
       label: 'Last Name',
       dataType: 'string',
     },
     {
+      id: 'age',
       label: 'Age',
       dataType: 'number',
+    },
+  ],
+  rows: [
+    {
+      userId: 5930,
+      firstName: 'Matt',
+      lastName: 'Palmer',
+      age: 25,
+    },
+    {
+      userId: 4920,
+      firstName: 'Adam',
+      lastName: 'Lawrence',
+      age: 31,
     },
   ],
 });
