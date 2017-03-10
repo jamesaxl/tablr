@@ -13,8 +13,10 @@ class Tablr {
 
 
   render() {
-    this.element.appendChild(render.header(this.columns));
-    this.element.appendChild(render.body(tabularRows(this.rows, this.columns)));
+    [
+      render.header(this.columns),
+      render.body(tabularRows(this.rows, this.columns)),
+    ].forEach(section => this.element.appendChild(section));
   }
 }
 
@@ -27,8 +29,8 @@ function resolveElement(element) {
 
 
 function tabularRows(rows, columns) {
-  return rows.map(row => Object.keys(row)
-    .map(id => row[id]));
+  const allIds = columns.map(column => column.id);
+  return rows.map(row => allIds.map(id => row[id]));
 }
 
 

@@ -39,6 +39,7 @@ const tablr = new Tablr('#has-schema', {
     },
   ],
 });
+
 console.log(tablr);
 
 
