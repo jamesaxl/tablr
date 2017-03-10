@@ -1,4 +1,5 @@
 import Column from './Column';
+import render from './render';
 
 
 class Tablr {
@@ -6,6 +7,13 @@ class Tablr {
   constructor(element, props) {
     this.element = resolveElement(element);
     this.columns = props.columns.map(a => new Column(a));
+    this.render();
+  }
+
+
+  render() {
+    this.element.appendChild(render.header(this.columns));
+    this.element.appendChild(render.body());
   }
 }
 
