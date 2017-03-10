@@ -1,14 +1,14 @@
-import Schema from './Schema';
-
-
-function Tablr(element) {
-  this.element = resolveElement(element);
-}
-
-
 function resolveElement(element) {
   if (element instanceof Element) return element;
   return document.querySelector(element);
+}
+
+
+class Tablr {
+
+  constructor(element) {
+    this.element = resolveElement(element);
+  }
 }
 
 

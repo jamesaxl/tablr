@@ -17,12 +17,12 @@ const base = {
     path: paths.dist,
     filename: '[name].js',
   },
-	resolve: {
-		modules: [
-			paths.src,
-			'node_modules',
-		],
-	},
+  resolve: {
+    modules: [
+      paths.src,
+      'node_modules',
+    ],
+  },
   module: {
     rules: [{
       test: /\.js$/,
