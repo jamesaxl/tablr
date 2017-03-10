@@ -17,6 +17,9 @@ class Tablr {
       render.header(this.columns),
       render.body(tabularRows(this.rows, this.columns)),
     ].forEach(section => this.element.appendChild(section));
+    Array.from(this.element.querySelectorAll('thead > th')).forEach((th, i) => {
+      this.columns[i].element = th;
+    });
   }
 }
 

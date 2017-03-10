@@ -4,6 +4,7 @@ class Column {
     this.id = props.id;
     this.label = props.label;
     this.dataType = props.dataType;
+    this.element = null;
   }
 }
 

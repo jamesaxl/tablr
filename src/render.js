@@ -1,7 +1,9 @@
 function header(columns) {
-  return document.createElement('thead').appendChild(columns
+  const thead = document.createElement('thead');
+  thead.appendChild(columns
     .map(column => column.label)
     .reduce(th, document.createElement('tr')));
+  return thead;
 }
 
 
