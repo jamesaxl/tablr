@@ -6,4 +6,7 @@ module.exports = {
   env: {
     browser: true,
   },
+  rules: {
+    'no-use-before-define': 0,
+  }
 };

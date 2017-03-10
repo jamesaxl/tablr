@@ -1,15 +1,43 @@
-function resolveElement(element) {
-  if (element instanceof Element) return element;
-  return document.querySelector(element);
-}
+import Column from './Column';
 
 
 class Tablr {
 
-  constructor(element) {
+  constructor(element, props) {
     this.element = resolveElement(element);
+    this.columns = props.columns.map(a => new Column(a));
   }
 }
+
+
+function resolveElement(element) {
+  const resolvedElement = typeof element === 'string' ? document.querySelector(element) : element;
+  if (resolvedElement.tagName !== 'TABLE') throw new Error('Element must be a table');
+  return resolvedElement;
+}
+
+
+const tablr = new Tablr('#has-schema', {
+  columns: [
+    {
+      label: 'UserID',
+      dataType: 'number',
+    },
+    {
+      label: 'First Name',
+      dataType: 'string',
+    },
+    {
+      label: 'Last Name',
+      dataType: 'string',
+    },
+    {
+      label: 'Age',
+      dataType: 'number',
+    },
+  ],
+});
+console.log(tablr);
 
 
 export default Tablr;
