@@ -7,13 +7,14 @@ class Tablr {
   constructor(element, props) {
     this.element = resolveElement(element);
     this.columns = props.columns.map(a => new Column(a));
+    this.rows = [];
     this.render();
   }
 
 
   render() {
     this.element.appendChild(render.header(this.columns));
-    this.element.appendChild(render.body());
+    this.element.appendChild(render.body(this.rows));
   }
 }
 

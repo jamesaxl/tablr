@@ -1,21 +1,32 @@
 function header(columns) {
-  const thead = document.createElement('thead');
-  thead.appendChild(columns
-    .reduce(headerCell, document.createElement('tr')));
-  return thead;
+  return document.createElement('thead')
+    .appendChild(columns
+      .reduce(th, document.createElement('tr')));
 }
 
 
-function headerCell(row, column) {
-  const cell = document.createElement('th');
-  cell.appendChild(document.createTextNode(column.label));
-  row.appendChild(cell);
+function body(rows) {
+  return document.createElement('tbody')
+    .appendChild(rows
+      .reduce(td, document.createElement('tr')));
+}
+
+
+function cell(row, column, type) {
+  const element = document.createElement(type);
+  element.appendChild(document.createTextNode(column.label));
+  row.appendChild(element);
   return row;
 }
 
 
-function body() {
+function th(row, column) {
+  return cell(row, column, 'th');
+}
 
+
+function td(row, column) {
+  return cell(row, column, 'td');
 }
 
 
