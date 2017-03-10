@@ -12,7 +12,7 @@ const paths = {
 
 const base = {
   context: paths.src,
-  entry: 'index.ts',
+  entry: 'index.js',
   output: {
     path: paths.dist,
     filename: '[name].js',
@@ -25,16 +25,13 @@ const base = {
 	},
   module: {
     rules: [{
-      test: /\.ts$/,
+      test: /\.js$/,
       use: [
         {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
           },
-        },
-        {
-          loader: 'ts-loader',
         },
       ],
     }],
@@ -54,6 +51,7 @@ const dev = {
       template: path.resolve('template.html'),
     }),
   ],
+  devtool: 'eval-source-map',
 };
 
 
